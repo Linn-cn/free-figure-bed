@@ -108,11 +108,9 @@ public class GithubUploader {
 
     /**
      * 获取文件后缀
-     *
      * @param file 文件
-     * @return java.lang.String
      * @author Linn-cn
-     * @date 2020/8/31
+     * @date 2020/11/14
      */
     protected String getSuffix(MultipartFile file) {
         String fileName = file.getOriginalFilename();
@@ -128,10 +126,8 @@ public class GithubUploader {
     /**
      * 按照年月日获取打散的打散目录
      * yyyy/mmd/dd
-     *
-     * @return java.lang.String[]
      * @author Linn-cn
-     * @date 2020/8/31
+     * @date 2020/11/14
      */
     protected String[] getDateFolder() {
         String[] retVal = new String[3];
