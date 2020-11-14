@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: figure-bed
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.244.248/image_bucket?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
+    username: root
+    password: 1320291471
+    # Hikari 连接池配置
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+server:
+  port: 8080
+
+knife4j:
+  enable: true
+
+github:
+  # 配置仓库所属的用户名（如果是自己创建的，就是自己的用户名）
+  user: "Linn-cn"
+  # 配置仓库名称
+  repository: "image-bucket"
+  accessToken: "你的Github访问Token"
+  api: https://api.github.com/repos/${github.user}/${github.repository}/contents/
+  url: https://raw.githubusercontent.com/${github.user}/${github.repository}/master/
+  cdn:
+    url: https://cdn.jsdelivr.net/gh/${github.user}/${github.repository}/
+
+
+
